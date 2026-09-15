@@ -19,6 +19,6 @@ def menu_administrador(lista_usuarios):
             elif 1 <= opcion <= 5: 
                 opciones[opcion - 1](lista_usuarios)
             else: 
-                print("\n❌ Opción inválida.")
+                print("\n Opción inválida.")
         except ValueError:
-            print("\n❌ Error: Debes ingresar un número del 1 al 6, no letras.")
+            print("\n Error: Debes ingresar un número del 1 al 6, no letras.")
