@@ -8,7 +8,7 @@ def login(lista_usuarios):
         u = next((u for u in lista_usuarios if u["usuario"].lower() == u_ing.lower() and u["contrasena"] == c_ing), None)
         return u["rol"] if u else "incorrecto"
     except ValueError as e:
-        print(f"\n❌ Error: {e}")
+        print(f"\n Error: {e}")
         return "incorrecto"
 
 def registrar_usuario(lista_usuarios):
@@ -17,14 +17,14 @@ def registrar_usuario(lista_usuarios):
         name = input("Nombre de usuario: ").strip()
         if name.isdigit(): raise ValueError("El nombre de usuario no puede ser un número.")
         if any(u["usuario"].lower() == name.lower() for u in lista_usuarios):
-            print(f"❌ El usuario \"{name}\" ya existe."); return
+            print(f" El usuario \"{name}\" ya existe."); return
 
         c_registrada = input("Contraseña: ")
         
         lista_usuarios.append({"usuario": name, "contrasena": c_registrada, "rol": "usuario"})
-        print(f"✅ Usuario \"{name}\" registrado con éxito.")
+        print(f" Usuario \"{name}\" registrado con éxito.")
     except ValueError as e:
-        print(f"\n❌ Error de formato: {e}")
+        print(f"\n Error de formato: {e}")
 
 def mostrar_usuarios(lista_usuarios):
     print("\n--- LISTA DE USUARIOS ---")
@@ -38,10 +38,10 @@ def buscar_usuario(lista_usuarios):
         name = input("Nombre a buscar: ").strip()
         if name.isdigit(): raise ValueError("Los nombres de usuario no contienen solo números.")
         u = next((u for u in lista_usuarios if u["usuario"].lower() == name.lower()), None)
-        print(f"🔍 Encontrado -> {u['usuario']} | Rol: {u['rol']}" if u else "❌ No encontrado.")
+        print(f" Encontrado -> {u['usuario']} | Rol: {u['rol']}" if u else " No encontrado.")
         return u
     except ValueError as e:
-        print(f"\n❌ Error: {e}")
+        print(f"\n Error: {e}")
         return None
 
 def modificar_usuario(lista_usuarios):
@@ -50,9 +50,9 @@ def modificar_usuario(lista_usuarios):
         try:
             pwd = input("Nueva contraseña (en blanco para mantener): ")
             if pwd: u["contrasena"] = pwd
-            print(f"✅ Usuario \"{u['usuario']}\" modificado.")
+            print(f" Usuario \"{u['usuario']}\" modificado.")
         except ValueError as e:
-            print(f"\n❌ Error: {e}")
+            print(f"\n Error: {e}")
 
 def eliminar_usuario(lista_usuarios):
     print("\n--- ELIMINAR USUARIO ---")
@@ -62,8 +62,8 @@ def eliminar_usuario(lista_usuarios):
         u = next((u for u in lista_usuarios if u["usuario"].lower() == name.lower()), None)
         if u:
             lista_usuarios.remove(u)
-            print(f"🗑️ Usuario \"{u['usuario']}\" eliminado.")
+            print(f" Usuario \"{u['usuario']}\" eliminado.")
         else:
-            print("❌ No se encontró el usuario.")
+            print(" No se encontró el usuario.")
     except ValueError as e:
-        print(f"\n❌ Error: {e}")
+        print(f"\n Error: {e}")
